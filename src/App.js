@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+//import ReactDOM from 'react-dom';
 import './App.css';
 
+import Header from './header';
+import Timeline from './timeline';
+import Compose from './compose';
+
 function App() {
+
+const initialPosts =[
+
+];
+
+const [posts, setPosts] = useState(initialPosts);
+
+function addPost(name, content)
+{
+  const newPost = {username: name, content: content}
+  setPosts([newPost, ...posts])
+};
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Compose addPost={addPost}/>
+      <Timeline posts={posts}/>
+      <button onClick={() => addPost('Mario','Its-a-me')}>Add Post</button>
     </div>
   );
 }
