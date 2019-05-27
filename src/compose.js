@@ -25,7 +25,7 @@ function submitForm(event) {
     <form onSubmit={submitForm}>
       <textarea rows="5" value={description} onChange={onChangeDescription}/>
       <br />
-      <button type="submit">OK</button>
+      <button type="submit">Post!</button>
     </form>
     </div>
   );
